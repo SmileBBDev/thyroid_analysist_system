@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import './assets/css/App.css'
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import MainLayout from './layouts/MainLayout'
 import Intro from './components/Intro'
 
+import Login from "./views/examples/Login";
+
 /**
  * 전체 루트 작성 페이지
  * 작성자 : 노현정
- * 작성일 : 2025.10.13
+ * 작성일 : 2025.10.23
  * 수정자 :
  * 수정일 :
  * 수정내용 :
@@ -25,6 +26,7 @@ function App() {
           {/* 추가되는 path가 있을 때 이 부분에 추가 */}
           {/* 다른 페이지 추가 시 아래처럼 작성*/}
           {/* <Route path="about" element={<About />} /> */}
+          <Route path="/login-page" exact element={<Login />} />
         </Route>
 
       </Routes>

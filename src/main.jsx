@@ -1,12 +1,23 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './assets/css/index.css'
+// import './assets/css/index.css'
+// import './assets/css/App.css'
+import "bootstrap/dist/css/bootstrap.min.css"; // 🔹 1. Bootstrap
+// import "./assets/vendor/nucleo/css/nucleo.css"; // 🔹 2. Nucleo 아이콘
+// import "./assets/vendor/font-awesome/css/font-awesome.min.css"; // 🔹 3. Font Awesome
+// import "./assets/css/argon-design-system-react.css"; // 🔹 4. Argon Design System
+// import "./assets/scss/argon-design-system-react.scss"; // 4. Argon SCSS (✅ CSS 대신)
+
+import '/src/assets/vendor/nucleo/css/nucleo.css';
+import '/src/assets/vendor/font-awesome/css/font-awesome.min.css';
+import '/src/assets/css/argon-design-system-react.css';
+
 import App from './App'
 
 /**
  * react 프로젝트 진입점
  * 작성자 : 노현정
- * 작성일 : 2025.10.13
+ * 작성일 : 2025.10.23
  * 수정자 :
  * 수정일 :
  * 수정내용 :
@@ -28,5 +39,5 @@ import App from './App'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )

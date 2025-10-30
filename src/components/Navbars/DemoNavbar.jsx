@@ -183,92 +183,33 @@ class DemoNavbar extends React.Component {
                       <DropdownItem to="/profile-page" tag={Link}>
                         Profile
                       </DropdownItem>
-                      <DropdownItem to="/login-page" tag={Link}>
+                      {/* <DropdownItem to="/login-page" tag={Link}>
                         Login
-                      </DropdownItem>
+                      </DropdownItem> */}
                       <DropdownItem to="/register-page" tag={Link}>
                         Register
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
+                  <NavLink>질변 안내</NavLink>
+                  <NavLink>환자 관리</NavLink>
+                  <NavLink>갑상선 질병상태 예측</NavLink>
                 </Nav>
                 <Nav className="align-items-lg-center ml-lg-auto" navbar>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="https://www.facebook.com/creativetim"
-                      id="tooltip333589074"
-                      target="_blank"
-                    >
-                      <i className="fa fa-facebook-square" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Facebook
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip333589074">
-                      Like us on Facebook
-                    </UncontrolledTooltip>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="https://www.instagram.com/creativetimofficial"
-                      id="tooltip356693867"
-                      target="_blank"
-                    >
-                      <i className="fa fa-instagram" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Instagram
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip356693867">
-                      Follow us on Instagram
-                    </UncontrolledTooltip>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="https://twitter.com/creativetim"
-                      id="tooltip184698705"
-                      target="_blank"
-                    >
-                      <i className="fa fa-twitter-square" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Twitter
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip184698705">
-                      Follow us on Twitter
-                    </UncontrolledTooltip>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="https://github.com/creativetimofficial/argon-design-system-react"
-                      id="tooltip112445449"
-                      target="_blank"
-                    >
-                      <i className="fa fa-github" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Github
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip112445449">
-                      Star us on Github
-                    </UncontrolledTooltip>
-                  </NavItem>
+                  {/* 로그인 / 로그아웃 버튼 */}
+                  {/* if문으로 로그인/로그아웃 버튼 보이도록 수정 필요 */}
                   <NavItem className="d-none d-lg-block ml-lg-4">
                     <Button
                       className="btn-neutral btn-icon"
                       color="default"
-                      href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-navbar"
-                      target="_blank"
+                      tag={Link}     // ✅ Link로 변경
+                      to="/login-page"    // ✅ react-router-dom 라우팅용
                     >
                       <span className="btn-inner--icon">
-                        <i className="fa fa-cloud-download mr-2" />
+                        <i className="fa fa-solid fa-user  mr-2"></i>
                       </span>
                       <span className="nav-link-inner--text ml-1">
-                        Download
+                        로그인
                       </span>
                     </Button>
                   </NavItem>
