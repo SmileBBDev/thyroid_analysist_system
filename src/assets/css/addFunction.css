@@ -1,0 +1,10 @@
+ .login-header {
+    font-Weight: 600;
+    color: #5e72e4;
+    letter-Spacing: 1px;
+    margin-Bottom: 25px;
+    border-Bottom: 2px solid #5e72e4;
+    display: inline-block;
+    padding-Bottom: 6px;
+    animation: fadeIn 1s ease-in-out;
+  }

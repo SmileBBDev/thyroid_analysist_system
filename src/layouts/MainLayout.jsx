@@ -15,13 +15,20 @@ export default function MainLayout() {
         <section className="section section-lg section-shaped pb-250">
           {/* 배경 도형 */}
           <div className="shape shape-style-1 bg-gradient-default">
-           
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
-          <Container className="py-lg-md d-flex justify-content-center">
-            <div className="col px-0 text-center">
+          {/* <Container className="py-lg-md d-flex justify-content-center">
+            <div className="col px-0 text-center"> */}
               <Outlet  /> {/* 각 페이지 내용이 여기에 렌더링 */}
-            </div>
-          </Container>
+            {/* </div>
+          </Container> */}
           {/* 아래쪽 하단부의 '경사면' 효과 */}
           <div className="separator separator-bottom separator-skew zindex-100">
             <svg
