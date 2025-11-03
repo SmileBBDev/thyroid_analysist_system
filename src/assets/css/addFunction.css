@@ -8,3 +8,17 @@
     padding-Bottom: 6px;
     animation: fadeIn 1s ease-in-out;
   }
+
+  .nav-link.active {
+  font-weight: 700;
+  color: #007bff; /* 진한 파란색 */
+  border-bottom: 2px solid #007bff;
+}
+
+/* 갑상선 질환 안내 타이틀 색상 변경 */
+.page-title {
+  color: #8484a0;
+  font-weight: 700; /* 강조 */
+  font-size: 1.8rem;
+  padding-left: 10px;
+}

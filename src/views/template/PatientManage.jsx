@@ -80,15 +80,15 @@ const PatientManage = () => {
   };
 
   return (
-    <main style={{ background: "#0e1446", minHeight: "100vh" }}>
+    <main>
       {/* 상단 헤더 */}
-      <section className="section section-lg pb-6 text-white">
+      <section className="section section-lg pb-6 text-center text-white">
         <Container>
-          <h2 className="display-4 mb-2">🩺 환자 관리 (의사용)</h2>
+          <h2 className="display-4 mb-2 page-title">환자 관리</h2>
           <p className="lead mb-0">
-            의사가 환자 정보를 등록하고, 진단 및 위험도를 관리할 수 있습니다.
-            추후 Django 백엔드와 연동하여 데이터베이스 저장이 가능합니다.
+            환자 정보를 등록하고, 갑상선 질환 진단 및 위험도를 관리할 수 있습니다.
           </p>
+          <p></p>
         </Container>
       </section>
 

@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css"; // 🔹 1. Bootstrap
 import '/src/assets/vendor/nucleo/css/nucleo.css';
 import '/src/assets/vendor/font-awesome/css/font-awesome.min.css';
 import '/src/assets/css/argon-design-system-react.css';
+import '/src/assets/css/addFunction.css'
 
 import App from './App'
 
@@ -32,7 +33,7 @@ import App from './App'
 //  ┣ views/           # 라우팅되는 페이지 (예: Home, Dashboard, Login 등)
 //  ┣ hooks/           # 커스텀 훅 - 미생성
 //  ┣ contexts/        # 전역 상태관리 (예: AuthContext, ThemeContext) - 미생성
-//  ┣ services/        # API 통신 로직 (axios 등) - 미생성
+//  ┣ services/        # API 통신 로직 (axios 등)
 //  ┣ utils/           # 헬퍼 함수 (formatter, validator 등) - 미생성
 //  ┣ App.jsx          # 전체 루트 - 라우팅 및 전체 구조 정의
 //  ┗ main.jsx         # ReactDOM.createRoot()가 있는 진입점

@@ -16,6 +16,9 @@ import NursePatients from "./views/nurse/NursePatients";
 import NurseProfile from "./views/nurse/NurseProfile";
 import DashboardHome from "./views/nurse/DashboardHome";
 
+import PatientManage from "./views/template/PatientManage"
+import PredictDiease from "./views/template/PredictDiease"
+
 /**
  * 전체 루트 작성 페이지
  * 작성자 : 노현정
@@ -46,6 +49,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Login />} />
           <Route path="diease/" element={<Diease/>} /> {/* 질병 안내 페이지 */}
+          <Route path="patientManage/" element={<PatientManage/>} /> {/* 환자 관리 페이지 - 의사 로그인에 보여질 화면 */}
+          <Route path='predictDiease/'element={<PredictDiease />} /> {/* 갑상성 질병상태 예측 페이지 */}
 
 
           {/* 회원유형에 맞게 화면 다르게 보여주는 작업 필요 */}

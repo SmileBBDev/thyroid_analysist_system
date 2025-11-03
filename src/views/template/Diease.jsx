@@ -148,16 +148,17 @@ class Diease extends React.Component {
     return (
       <main
         className="profile-page"
-        style={{ backgroundColor: "#0e1446", minHeight: "100vh" }}
+        // style={{ backgroundColor: "#0e1446", minHeight: "100vh" }}
       >
         {/* 상단 히어로 영역 (홈이랑 톤 맞춤) */}
-        <section className="section section-lg pt-8 pb-6 text-center text-white">
+        <section className="section section-lg pb-6 text-center text-white">
           <Container>
-            <h2 className="display-4 font-weight-bold mb-3">갑상선 질환 안내</h2>
+            <h2 className="display-4 font-weight-bold mb-3 page-title">갑상선 질환 안내</h2>
             <p className="lead text-light">
-              기능 이상, 염증성 질환, 결절, 암까지 한 화면에서 볼 수 있도록 정리했어요.
-              필요한 질환을 누르면 오른쪽에 상세 정보가 나와요.
+              갑상선의 기능 이상 / 염증성 질환 / 결절 / 암 정보를 만나보세요. <br />
+              질환을 클릭하시면 우측화면에서 상세정보를 확인하실 수 있습니다.
             </p>
+            <br/>
           </Container>
         </section>
 

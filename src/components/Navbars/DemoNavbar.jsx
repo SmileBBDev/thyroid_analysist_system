@@ -16,7 +16,6 @@ import {
   NavbarBrand,
   Navbar,
   NavItem,
-  NavLink,
   Nav,
   Container,
   UncontrolledDropdown,
@@ -25,7 +24,7 @@ import {
   Media,
 } from "reactstrap";
 import brandLogo from "../../assets/img/logo/brand_logo_white.png";
-import { NavLink as navLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class DemoNavbar extends React.Component {
   componentDidMount() {
@@ -69,8 +68,8 @@ class DemoNavbar extends React.Component {
               <button className="navbar-toggler" id="navbar_global">
                 <span className="navbar-toggler-icon" />
               </button>
-              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
-                <UncontrolledDropdown nav>
+              {/*<Nav className="navbar-nav-hover align-items-lg-center" navbar>
+                 <UncontrolledDropdown nav>
                     <DropdownToggle nav>
                       <i className="ni ni-ui-04 d-lg-none mr-1" />
                       <span className="nav-link-inner--text">Components</span>
@@ -133,10 +132,38 @@ class DemoNavbar extends React.Component {
                         </Media>
                       </div>
                     </DropdownMenu>
-                  </UncontrolledDropdown>
+                  </UncontrolledDropdown> 
                 <NavLink tag={navLink} to="/diease">질병 안내</NavLink>
-                <NavLink tag={navLink} to="/diease">환자 관리</NavLink>
-                <NavLink tag={navLink} to="/diease">갑상선 질병상태 예측</NavLink>
+                <NavLink tag={navLink} to="/patientManage">환자 관리</NavLink>
+                <NavLink tag={navLink} to="/predictDiease">갑상선 질병상태 예측</NavLink>
+              </Nav>*/}
+              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
+                <NavLink
+                  to="/diease"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                >
+                  질병 안내
+                </NavLink>
+
+                <NavLink
+                  to="/patientManage"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                >
+                  환자 관리
+                </NavLink>
+
+                <NavLink
+                  to="/predictDiease"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                >
+                  갑상선 질병상태 예측
+                </NavLink>
               </Nav>
               <Nav className="align-items-lg-center ml-lg-auto" navbar>
                 {/* 로그인 / 로그아웃 버튼 */}
