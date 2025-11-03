@@ -38,6 +38,6 @@ import App from './App'
 //  ┗ main.jsx         # ReactDOM.createRoot()가 있는 진입점
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+      <App />
   </StrictMode>
 )

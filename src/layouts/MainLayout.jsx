@@ -3,13 +3,11 @@ import React from "react";
 import DemoNavbar from "../components/Navbars/DemoNavbar";
 import CardsFooter from "../components/Footers/CardsFooter";
 import { Outlet } from "react-router-dom";
-// reactstrap components
-import { Container, Row } from "reactstrap";
 
 export default function MainLayout() {
   return (
     <>
-      <DemoNavbar />
+      <DemoNavbar /> {/* 상단 메뉴바 항목이 여기에 렌더링 */}
       <main >
         {/* 상단 Hero Section */}
         <section className="section section-lg section-shaped pb-250">
@@ -24,11 +22,9 @@ export default function MainLayout() {
             <span />
             <span />
           </div>
-          {/* <Container className="py-lg-md d-flex justify-content-center">
-            <div className="col px-0 text-center"> */}
-              <Outlet  /> {/* 각 페이지 내용이 여기에 렌더링 */}
-            {/* </div>
-          </Container> */}
+          
+          <Outlet /> {/* 각 페이지 내용이 여기에 렌더링 */}
+
           {/* 아래쪽 하단부의 '경사면' 효과 */}
           <div className="separator separator-bottom separator-skew zindex-100">
             <svg
@@ -46,7 +42,7 @@ export default function MainLayout() {
        
         {/* 본문 하단 여백 영역 */}
         <section className="section section-lg pt-lg-0">
-          {/* 필요 시 다른 콘텐츠 추가 */}
+        {/* 필요 시 다른 콘텐츠 추가 */}
         </section>
       </main>
       <CardsFooter />

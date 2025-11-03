@@ -1,0 +1,211 @@
+/* ===============================
+   📌 전체 레이아웃 기본 구조
+================================= */
+:root {
+  --color-primary: #0b1a3c; /* 브랜드 네이비 (메인 페이지의 딥블루) */
+  --color-accent: #2f80ed; /* 버튼 포인트 블루 */
+  --color-bg-light: #f8fafc; /* 대시보드 배경 */
+  --color-border: #e5e7eb;
+  --color-text-main: #1f2937;
+  --color-hover-bg: #e0e7ff; /* hover 시 연한 블루 */
+  --font-main: 'Pretendard', 'Noto Sans KR', sans-serif;
+}
+
+/* 전체 레이아웃 */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f5f6fa; /* 기본 배경 */
+}
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+
+/* 왼쪽 사이드바 */
+.sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+}
+
+/* 오른쪽 메인 영역 */
+.main-content {
+  flex: 1; /* ✅ 남은 공간 전부 차지 */
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+}
+
+/* 상단 헤더 */
+.app-header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 실제 페이지 컨텐츠 영역 */
+.page-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* ===============================
+   📌 사이드바 스타일 (AppSidebar)
+================================= */
+/* Sidebar 전체 */
+aside {
+  width: 16rem;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* 브랜드 로고 */
+aside img {
+  width: 120px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+/* 메뉴 전체 */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+}
+
+/* space-y-3 대체 — 각 li 간 간격 */
+.sidebar-menu li + li {
+  margin-top: 0.75rem; /* space-y-3 효과 (Tailwind 기준 0.75rem = 12px) */
+}
+
+/* 메뉴 링크 */
+.sidebar-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #374151; /* text-gray-700 */
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* hover 상태 */
+.sidebar-menu a:hover {
+  background-color: #dbeafe; /* hover:bg-blue-100 */
+  color: #1e3a8a;
+}
+
+/* active 상태 */
+.sidebar-menu a.active {
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: white;
+}
+
+/* ===============================
+   📌 헤더 및 메인 컨텐츠 영역
+================================= */
+/* 전체 헤더 스타일 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 32px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 왼쪽 제목 */
+.header-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* 오른쪽 영역 */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+/* 사용자 이름 버튼 */
+.user-button {
+  background: none;
+  border: none;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+/* 드롭다운 메뉴 */
+.nurse-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  width: 160px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* 드롭다운 항목 */
+.nurse-dropdown-item {
+  display: block;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: #374151;
+  text-decoration: none;
+}
+
+.nurse-dropdown-item:hover {
+  background-color: #f3f4f6;
+}
+
+/* 선택된 항목 스타일 */
+.nurse-dropdown-item.active {
+  background-color: #e0f2fe; /* 연한 파란색 배경 */
+  color: #1d4ed8; /* 진한 파란색 텍스트 */
+  font-weight: 600;
+}
+
+
+/* 로그아웃 버튼 */
+.logout-button {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: #dc2626;
+  background-color: transparent;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #fef2f2;
+}
+
+
+.card, table {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}

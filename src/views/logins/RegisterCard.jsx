@@ -117,7 +117,7 @@ function RegisterForm() {
                                         </FormGroup>
 
                                         {/* 회원 유형 */}
-                                        <FormGroup className="mb-3">
+                                        {/* <FormGroup className="mb-3">
                                         <InputGroup className="input-group-alternative">
                                             <InputGroupText>
                                             <i className="fa fa-user-circle" />
@@ -134,10 +134,10 @@ function RegisterForm() {
                                             <option value="nurse">간호사</option>
                                             </Input>
                                         </InputGroup>
-                                        </FormGroup>
+                                        </FormGroup> */}
 
                                         {/* 전문과 */}
-                                        <FormGroup className="mb-3">
+                                        {/* <FormGroup className="mb-3">
                                         <InputGroup className="input-group-alternative">
                                             <InputGroupText>
                                             <i className="fa fa-stethoscope" />
@@ -155,10 +155,10 @@ function RegisterForm() {
                                             <option value="정형외과">정형외과</option>
                                             </Input>
                                         </InputGroup>
-                                        </FormGroup>
+                                        </FormGroup> */}
 
                                         {/* 직급 */}
-                                        <FormGroup className="mb-4">
+                                        {/* <FormGroup className="mb-4">
                                         <InputGroup className="input-group-alternative">
                                             <InputGroupText>
                                             <i className="fa fa-briefcase" />
@@ -180,7 +180,7 @@ function RegisterForm() {
                                             <option value="인턴">인턴</option>
                                             </Input>
                                         </InputGroup>
-                                        </FormGroup>
+                                        </FormGroup> */}
                                         
 
                                         {/* 회원가입 완료 버튼 */}
