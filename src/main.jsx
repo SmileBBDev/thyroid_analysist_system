@@ -1,7 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-// import './assets/css/index.css'
-// import './assets/css/App.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import "bootstrap/dist/css/bootstrap.min.css"; // 🔹 1. Bootstrap
 // import "./assets/vendor/nucleo/css/nucleo.css"; // 🔹 2. Nucleo 아이콘
 // import "./assets/vendor/font-awesome/css/font-awesome.min.css"; // 🔹 3. Font Awesome
@@ -13,7 +13,7 @@ import '/src/assets/vendor/font-awesome/css/font-awesome.min.css';
 import '/src/assets/css/argon-design-system-react.css';
 import '/src/assets/css/addFunction.css'
 
-import App from './App'
+import App from './App.jsx'
 
 /**
  * react 프로젝트 진입점
@@ -34,11 +34,23 @@ import App from './App'
 //  ┣ hooks/           # 커스텀 훅 - 미생성
 //  ┣ contexts/        # 전역 상태관리 (예: AuthContext, ThemeContext) - 미생성
 //  ┣ services/        # API 통신 로직 (axios 등)
-//  ┣ utils/           # 헬퍼 함수 (formatter, validator 등) - 미생성
+//  ┣ utils/           # 헬퍼 함수 (예 : formatter, validator 등)
 //  ┣ App.jsx          # 전체 루트 - 라우팅 및 전체 구조 정의
 //  ┗ main.jsx         # ReactDOM.createRoot()가 있는 진입점
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <App />
-  </StrictMode>
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//       <App />
+//   </StrictMode>
+// )

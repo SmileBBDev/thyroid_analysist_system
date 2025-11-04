@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
+import ProtectedRoute from "./context/ProtectedRoute";
+import { ROLES } from "./utils/roles";
 
 import MainLayout from './layouts/MainLayout'
 import Intro from './components/Intro'
 
 import Login from "./views/logins/Login";
 import Diease from "./views/template/Diease"
-import Patient from "./views/patient/Patient";
-import Doctor from "./views/doctor/Doctor";
-import ProtectedRoute from "./components/ProtectedRoute"
+// import Patient from "./views/patient/Patient";
+// import Doctor from "./views/doctor/Doctor";
 
 import Nurse from "./views/nurse/Nurse";
 import NurseDashboard from "./layouts/NurseDashboard";
@@ -17,15 +17,17 @@ import NurseProfile from "./views/nurse/NurseProfile";
 import DashboardHome from "./views/nurse/DashboardHome";
 
 import PatientManage from "./views/template/PatientManage"
+import PatientDetail from "./views/template/PatientDetail"
 import PredictDiease from "./views/template/PredictDiease"
+import AdminUsers from "./views/template/AdminUsers"
 
 /**
  * 전체 루트 작성 페이지
  * 작성자 : 노현정
  * 작성일 : 2025.10.23
- * 수정자 :
- * 수정일 :
- * 수정내용 :
+ * 수정자 : 노현정
+ * 수정일 : 2025.11.04
+ * 수정내용 : 권한별 접근 페이지 역할 구분
  */
 
 // 웹 페이지 동작 주소 입력
@@ -33,7 +35,7 @@ function App() {
   const userRole = "nurse" // localStorage.getItem("role"); // todo: 로그인 후 저장된 역할 정보가 들어갈 수 있도록 수정
 
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         {/* 메인 페이지 레이아웃 */}
         {/* 
@@ -48,15 +50,47 @@ function App() {
           {/* <Route path="about" element={<About />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Login />} />
-          <Route path="diease/" element={<Diease/>} /> {/* 질병 안내 페이지 */}
-          <Route path="patientManage/" element={<PatientManage/>} /> {/* 환자 관리 페이지 - 의사 로그인에 보여질 화면 */}
-          <Route path='predictDiease/'element={<PredictDiease />} /> {/* 갑상성 질병상태 예측 페이지 */}
 
+          {/* 사용자 권환별로 표출 화면 분할 */}
+          {/* 질병 안내 페이지 - 모든 사용자가 보임 */}
+          <Route path="diease/" element={
+              <Diease/>
+          
+          } /> 
+          
+          {/* 갑상성 질병상태 예측 페이지 */}
+          <Route path="predictDiease" element={
+            <ProtectedRoute roles={[] /* 모든 로그인 사용자 허용 */}>
+              <PredictDiease/>
+            </ProtectedRoute>
+          }/>
 
+          {/* 환자 관리 페이지 - 의사&관리자가 로그인하면 보임 */}
+          <Route path="patientManage" element={
+            <ProtectedRoute roles={[ROLES.DOCTOR, ROLES.ADMIN]}>
+              <PatientManage/>
+            </ProtectedRoute>
+          }/>
+          <Route path="patientManage/:id" element={
+            <ProtectedRoute roles={[ROLES.DOCTOR, ROLES.ADMIN]}>
+              <PatientDetail/>
+            </ProtectedRoute>
+          }/>
+
+          <Route path="/admin/users" element={
+            <ProtectedRoute roles={[ROLES.ADMIN]}>
+              <AdminUsers/>
+            </ProtectedRoute>
+          }/>
+
+          {/* <Route path="patientManage/" element={<PatientManage/>} /> 
+          <Route path='predictDiease/'element={<PredictDiease />} />  */}
           {/* 회원유형에 맞게 화면 다르게 보여주는 작업 필요 */}
-          <Route path="patient/" element={<Patient/>} /> {/* 환자 페이지 */}  
-          <Route path="doctor/" element={<Doctor/>} /> {/* 의사 페이지 */} 
+          {/* <Route path="patient/" element={<Patient/>} /> 환자 페이지 */}  
+          {/* <Route path="doctor/" element={<Doctor/>} /> 의사 페이지   */}
         </Route>
+      
+
 
         {/* 간호사 전용 페이지 (MainLayout 바깥, 독립 페이지) */}
         <Route
@@ -77,10 +111,7 @@ function App() {
         </Route>
         </Route>
       </Routes>
-
-        
-
-    </BrowserRouter>
+    </>
   )
 }
 

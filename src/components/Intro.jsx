@@ -3,17 +3,33 @@ import { Container, Row, Col, Button,
   Card, CardBody } from "reactstrap"; // 컴포넌트 추가할 때 작성
 import { Brain, ShieldCheck, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAuth } from "../context/AuthContext"; // 로그인 정보 확인
+import { useNavigate } from "react-router-dom";
 import mainImage from "../assets/img/main-imge-01.png";
 /**
  * Intro 페이지
  * 작성자 : 노현정
  * 작성일 : 2025.10.30
- * 수정자 :
- * 수정일 :
- * 수정내용 :
+ * 수정자 : 노현정
+ * 수정일 : 2025.11.04
+ * 수정내용 : 예측하기 버튼 로그인 상태에 따라 화면UI 경로 다르게 부여
  */
 
 export default function Intro(){
+    const navigate = useNavigate();
+    const { loginUser } = useAuth(); // 현재 로그인된 사용자 정보
+
+    const handlePredictClick = () => {
+      if (loginUser) {
+        // 로그인 상태면 예측 페이지로 이동
+        navigate("/predictDiease");
+      } else {
+        // 로그인 안되어 있으면 경고 후 로그인 페이지로 이동
+        alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+        navigate("/login");
+      }
+    };
+
     return (
       <>
       {/* Hero Section */}
@@ -32,7 +48,7 @@ export default function Intro(){
                       <Button
                         className="btn-icon mb-3 mb-sm-0"
                         color="info"
-                        href="#!"
+                        onClick={handlePredictClick}
                       >
                         <span className="btn-inner--icon">
                           <i className="ni ni-favourite-28" />
