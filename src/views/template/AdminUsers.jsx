@@ -80,10 +80,10 @@ export default function AdminUsers() {
                     <span
                       className={`badge rounded-pill px-3 py-2 ${
                         u.role === "admin"
-                          ? "bg-danger"
+                          ? "bg-dark text-white"
                           : u.role === "doctor"
-                          ? "bg-info text-white"
-                          : "bg-secondary text-white"
+                          ? "bg-success text-white"
+                          : "bg-warning text-dark"
                       }`}
                     >
                       {u.role || "general"}
@@ -95,7 +95,18 @@ export default function AdminUsers() {
                       value={u.role || "general"}
                       onChange={(e) => changeRole(u.username, e.target.value)}
                       className="form-select-sm"
-                      style={{ maxWidth: 140, margin: "0 auto" }}
+                      // style={{ maxWidth: 140, margin: "0 auto" }}
+                      style={{
+                        maxWidth: 140,
+                        borderRadius: "8px",
+                        height: "45px",
+                        borderColor: "#ddd",
+                        fontSize: "0.95rem",
+                        backgroundColor: "#fff",
+                        paddingRight: "35px", // 오른쪽 여백 확보
+                        textAlign : "center",
+                        marginLeft:"10px",
+                      }}
                     >
                       <option value="general">일반</option>
                       <option value="doctor">의사</option>
