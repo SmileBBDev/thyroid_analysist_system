@@ -69,14 +69,14 @@ function RegisterForm() {
                                                 </InputGroupText>
                                                 <Input placeholder="Password" type="password" autoComplete="off"/>
                                             </InputGroup> 
-                                            <div className="text-muted font-italic">
+                                            {/* <div className="text-muted font-italic">
                                                 <small>
                                                     password strength:{" "}
                                                     <span className="text-success font-weight-700">
                                                     패스워드 안전하다 아니다 체크 추가
                                                     </span>
                                                 </small>
-                                            </div>
+                                            </div> */}
                                         </FormGroup>
                                         {/* 이름 */}
                                         <FormGroup>

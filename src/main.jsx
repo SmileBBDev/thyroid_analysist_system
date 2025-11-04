@@ -24,15 +24,13 @@ import App from './App.jsx'
  * 수정내용 :
  */
 
-
 // 폴더 구조 설명
 // src/
 //  ┣ assets/          # 이미지, 아이콘, 전역 CSS 등
 //  ┣ components/      # 재사용 가능한 컴포넌트 : 공통 UI 컴포넌트 (Navbar, Sidebar, Modal 등)
 //  ┣ layouts/         # 페이지 공통 레이아웃 (예: AdminLayout, AuthLayout)
 //  ┣ views/           # 라우팅되는 페이지 (예: Home, Dashboard, Login 등)
-//  ┣ hooks/           # 커스텀 훅 - 미생성
-//  ┣ contexts/        # 전역 상태관리 (예: AuthContext, ThemeContext) - 미생성
+//  ┣ contexts/        # 전역 상태관리 (예: AuthContext, ThemeContext)
 //  ┣ services/        # API 통신 로직 (axios 등)
 //  ┣ utils/           # 헬퍼 함수 (예 : formatter, validator 등)
 //  ┣ App.jsx          # 전체 루트 - 라우팅 및 전체 구조 정의
