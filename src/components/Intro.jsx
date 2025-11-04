@@ -17,10 +17,10 @@ import mainImage from "../assets/img/main-imge-01.png";
 
 export default function Intro(){
     const navigate = useNavigate();
-    const { loginUser } = useAuth(); // 현재 로그인된 사용자 정보
+    const { me } = useAuth(); // 현재 로그인된 사용자 정보
 
     const handlePredictClick = () => {
-      if (loginUser) {
+      if (me) {
         // 로그인 상태면 예측 페이지로 이동
         navigate("/predictDiease");
       } else {

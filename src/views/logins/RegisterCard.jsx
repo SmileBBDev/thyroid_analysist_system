@@ -15,7 +15,7 @@
  */
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
-
+import api from "../../services/client";
 import { Button,
     Card, CardBody, 
     Form, FormGroup, 
@@ -24,12 +24,52 @@ import { Button,
 
 function RegisterForm() {
     const [phone, setPhone] = useState(""); // 휴대전화번호 상태 선언
-      const navigate = useNavigate(); // 페이지 이동에 사용
+    const navigate = useNavigate(); // 페이지 이동에 사용
+
+     // 입력값 상태 관리
+    const [form, setForm] = useState({
+        username: "",
+        password: "",
+        email: "", 
+    });
+
+    // 입력값 변경 핸들러
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    // 전화번호 입력 시 숫자 및 하이픈 처리
+    const handlePhoneChange = (e) => {
+        let value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만
+        if (value.length > 3 && value.length <= 7)
+        value = value.replace(/(\d{3})(\d+)/, "$1-$2");
+        else if (value.length > 7)
+        value = value.replace(/(\d{3})(\d{4})(\d+)/, "$1-$2-$3");
+        setForm((prev) => ({ ...prev, phone: value }));
+    };
 
     // 계정 생성 버튼 클릭 시 발생할 이벤트
-    const handleSignupComplete = () => {
-        alert("관리자 승인 후 사용 가능합니다");
-        navigate("/");
+    const handleSignupComplete = async () => {
+        // Django API로 전송할 데이터
+        const formData = {
+            username: form.username,
+            password: form.password,
+            email : form.email
+        };
+        try {
+        const response = await api.post("/auth/register", 
+            formData,  {headers: { "Content-Type": "application/json" }});
+            alert("회원가입이 완료되었습니다. 관리자 승인 후 사용 가능합니다.");
+            navigate("/");
+
+        } catch (error) {
+            console.error("회원가입 실패:", error.response?.data || error.message);
+            alert("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+    
+    
+    
     };
 
 
@@ -58,7 +98,13 @@ function RegisterForm() {
                                                 <InputGroupText>
                                                 <i className="fa fa-regular fa-id-badge"></i>
                                                 </InputGroupText>
-                                                <Input placeholder="ID" type="text" />
+                                                <Input placeholder="ID"
+                                                    type="text"
+                                                    name="username"
+                                                    value={form.username}
+                                                    onChange={handleChange}
+                                                    required 
+                                                />
                                             </InputGroup>
                                         </FormGroup>
                                         {/* 비밀번호 */}
@@ -67,7 +113,13 @@ function RegisterForm() {
                                                 <InputGroupText>
                                                 <i className="ni ni-lock-circle-open" />
                                                 </InputGroupText>
-                                                <Input placeholder="Password" type="password" autoComplete="off"/>
+                                                <Input placeholder="Password" 
+                                                type="password"
+                                                value={form.password}
+                                                onChange={handleChange}
+                                                name="password"
+                                                autoComplete="off" 
+                                                required/>
                                             </InputGroup> 
                                             {/* <div className="text-muted font-italic">
                                                 <small>
@@ -85,9 +137,11 @@ function RegisterForm() {
                                                 <i className="fa fa-solid fa-user"></i>
                                                 </InputGroupText>
                                                 <Input 
-                                                    placeholder="이름을 입력해 주세요." 
+                                                    placeholder="이름을 입력해 주세요."
+                                                    onChange={handleChange} 
                                                     name="name"
-                                                    type="text" 
+                                                    type="text"
+                                                    value={form.name}
                                                     required
                                                 />
                                             </InputGroup>
@@ -101,20 +155,38 @@ function RegisterForm() {
                                                 <Input
                                                     type="tel"
                                                     name="phone"
-                                                    value={phone}
-                                                    onChange={(e) => {
-                                                        let value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만
-                                                        if (value.length > 3 && value.length <= 7)
-                                                        value = value.replace(/(\d{3})(\d+)/, "$1-$2");
-                                                        else if (value.length > 7)
-                                                        value = value.replace(/(\d{3})(\d{4})(\d+)/, "$1-$2-$3");
-                                                        setPhone(value);
-                                                    }}
+                                                    value={form.phone}
+                                                    onChange={handlePhoneChange}
+                                                    // onChange={(e) => {
+                                                    //     let value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만
+                                                    //     if (value.length > 3 && value.length <= 7)
+                                                    //     value = value.replace(/(\d{3})(\d+)/, "$1-$2");
+                                                    //     else if (value.length > 7)
+                                                    //     value = value.replace(/(\d{3})(\d{4})(\d+)/, "$1-$2-$3");
+                                                    //     setPhone(value);
+                                                    // }}
                                                     placeholder="연락처를 입력해 주세요."
                                                     maxLength="13"
                                                     />
                                             </InputGroup>
                                         </FormGroup>
+                                        {/* EMAIL */}
+                                        <FormGroup className="mb-3">
+                                            <InputGroup className="input-group-alternative">
+                                                <InputGroupText>
+                                                <i className="fa fa-regular fa-envelope"></i>
+                                                </InputGroupText>
+                                                <Input
+                                                placeholder="이메일을 입력해 주세요"
+                                                type="email"
+                                                name="email"
+                                                value={form.email}
+                                                onChange={handleChange}
+                                                required
+                                                />
+                                            </InputGroup>
+                                        </FormGroup>
+
 
                                         {/* 회원 유형 */}
                                         {/* <FormGroup className="mb-3">
